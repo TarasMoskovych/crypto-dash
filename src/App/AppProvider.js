@@ -12,7 +12,7 @@ export class AppProvider extends Component {
 
     this.state = {
       page: 'dashboard',
-      favorites: [],
+      favorites: ['BTC', 'XRP', 'BCH', 'ETN', 'LTC'],
       ...this.savedSettings(),
 
       setPage: this.setPage.bind(this),
@@ -20,7 +20,8 @@ export class AppProvider extends Component {
       addCoin: this.addCoin.bind(this),
       removeCoin: this.removeCoin.bind(this),
       isInFavorites: this.isInFavorites.bind(this),
-      setFilteredCoins: this.setFilteredCoins.bind(this)
+      setFilteredCoins: this.setFilteredCoins.bind(this),
+      setCurrentFavorite: this.setCurrentFavorite.bind(this)
     };
   }
 
@@ -44,13 +45,16 @@ export class AppProvider extends Component {
       return { page: 'settings', firstVisit: true };
     }
 
-    return { favorites: cryptoDashData.favorites };
+    const { favorites, currentFavorite } = cryptoDashData;
+    return { favorites, currentFavorite };
   }
 
   confirmFavorites() {
-    this.setState({ firstVisit: false, page: 'dashboard' }, this._fetchPrices.bind(this));
+    const currentFavorite = this.state.favorites[0];
 
-    window.localStorage.setItem('cryptoDash', JSON.stringify({ favorites: this.state.favorites }));
+    this.setState({ firstVisit: false, page: 'dashboard', currentFavorite }, this._fetchPrices.bind(this));
+
+    window.localStorage.setItem('cryptoDash', JSON.stringify({ favorites: this.state.favorites, currentFavorite }));
   }
 
   setPage(page) {
@@ -80,26 +84,32 @@ export class AppProvider extends Component {
     this.setState({ filteredCoins });
   }
 
+  setCurrentFavorite(symbol) {
+    this.setState({ currentFavorite: symbol });
+
+    window.localStorage.setItem('cryptoDash', JSON.stringify({
+      ...JSON.parse(window.localStorage.getItem('cryptoDash')), currentFavorite: symbol
+    }))
+  }
+
   async _fetchCoins() {
     this.setState({ coinList: (await cc.coinList()).Data });
   }
 
   async _fetchPrices() {
-    if (this.state.firstVisit) { return; }
-
     this.setState({ prices: await this._prices() });
   }
 
   async _prices() {
     const data = [];
 
-    this.state.favorites.forEach(async item => {
+    for (const item of this.state.favorites) {
       try {
         data.push(await cc.priceFull(item, 'USD'));
       } catch (e) {
         console.warn(e);
       }
-    });
+    }
 
     return data;
   }

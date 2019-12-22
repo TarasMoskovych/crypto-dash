@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { DeletableTile } from '../Shared/Tile';
+import { LeftSelf, RightSelf } from '../Shared/GridAlignment';
 
 export const CoinHeaderGrid = styled.div`
   display: grid;
@@ -9,15 +10,7 @@ export const CoinHeaderGrid = styled.div`
   margin-bottom: 20px;
 `;
 
-export const CoinName = styled.div`
-  justify-self: left;
-`;
-
-export const CoinSymbol = styled.div`
-  justify-self: right;
-`;
-
-const DeleteIcon = styled(CoinSymbol)`
+const DeleteIcon = styled(RightSelf)`
   display: none;
 
   ${DeletableTile}:hover & {
@@ -29,11 +22,11 @@ const DeleteIcon = styled(CoinSymbol)`
 export default function({ name, symbol, topSection }) {
   return (
     <CoinHeaderGrid>
-      <CoinName>{name}</CoinName>
+      <LeftSelf>{name}</LeftSelf>
       {topSection ? (
         <DeleteIcon>X</DeleteIcon>
       ) : (
-        <CoinSymbol>{symbol}</CoinSymbol>
+        <RightSelf>{symbol}</RightSelf>
       )}
     </CoinHeaderGrid>
   );
