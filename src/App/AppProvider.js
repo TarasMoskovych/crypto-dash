@@ -19,12 +19,14 @@ export class AppProvider extends Component {
       confirmFavorites: this.confirmFavorites.bind(this),
       addCoin: this.addCoin.bind(this),
       removeCoin: this.removeCoin.bind(this),
-      isInFavorites: this.isInFavorites.bind(this)
+      isInFavorites: this.isInFavorites.bind(this),
+      setFilteredCoins: this.setFilteredCoins.bind(this)
     };
   }
 
   componentDidMount() {
     this._fetchCoins();
+    this._fetchPrices();
   }
 
   render() {
@@ -42,14 +44,11 @@ export class AppProvider extends Component {
       return { page: 'settings', firstVisit: true };
     }
 
-    return { page: 'settings', favorites: cryptoDashData.favorites };
+    return { favorites: cryptoDashData.favorites };
   }
 
   confirmFavorites() {
-    this.setState({
-      firstVisit: false,
-      page: 'dashboard'
-    });
+    this.setState({ firstVisit: false, page: 'dashboard' }, this._fetchPrices.bind(this));
 
     window.localStorage.setItem('cryptoDash', JSON.stringify({ favorites: this.state.favorites }));
   }
@@ -77,7 +76,31 @@ export class AppProvider extends Component {
     return _.includes(this.state.favorites, key);
   }
 
+  setFilteredCoins(filteredCoins) {
+    this.setState({ filteredCoins });
+  }
+
   async _fetchCoins() {
     this.setState({ coinList: (await cc.coinList()).Data });
+  }
+
+  async _fetchPrices() {
+    if (this.state.firstVisit) { return; }
+
+    this.setState({ prices: await this._prices() });
+  }
+
+  async _prices() {
+    const data = [];
+
+    this.state.favorites.forEach(async item => {
+      try {
+        data.push(await cc.priceFull(item, 'USD'));
+      } catch (e) {
+        console.warn(e);
+      }
+    });
+
+    return data;
   }
 }
