@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import SwitcherEl from './../Shared/Switcher';
 
 import { AppContext } from './AppProvider';
 
@@ -8,8 +9,9 @@ const Logo = styled.div`
 `;
 
 const Bar = styled.div`
+  align-items: center;
   display: grid;
-  grid-template-columns: 180px auto 100px 100px;
+  grid-template-columns: 180px auto 100px 80px 50px;
   margin-bottom: 40px;
 `;
 
@@ -37,6 +39,20 @@ function ControlButton({ name }) {
   );
 }
 
+function Switcher() {
+  return (
+    <AppContext.Consumer>
+      {({ theme, changeTheme }) => (
+        <SwitcherEl
+          defaultChecked={theme === 'dark'}
+          id="switch"
+          onChange={e => changeTheme(e.target.checked)}
+        />
+      )}
+    </AppContext.Consumer>
+  );
+}
+
 export default function() {
   return (
     <Bar>
@@ -44,6 +60,7 @@ export default function() {
       <div />
       <ControlButton active name="dashboard" />
       <ControlButton name="settings" />
+      <Switcher/>
     </Bar>
   );
 };

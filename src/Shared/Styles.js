@@ -1,5 +1,6 @@
-const theme = 'dark';
-//const theme = 'light';
+const data = JSON.parse(window.localStorage.getItem('cryptoDash'));
+const theme = data && data.theme && !data.firstVisit ? data.theme : 'dark';
+
 export const lightTheme = theme === 'light';
 
 export const color = lightTheme ? 'white' : '#061a44';

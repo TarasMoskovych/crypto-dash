@@ -15,7 +15,9 @@ export class AppProvider extends Component {
     this.state = {
       page: 'dashboard',
       favorites: ['BTC', 'XRP', 'BCH', 'ETN', 'LTC'],
+      currentFavorite: ['BTC'],
       timeInterval: 'months',
+      theme: 'dark',
       ...this.savedSettings(),
 
       setPage: this.setPage.bind(this),
@@ -25,7 +27,8 @@ export class AppProvider extends Component {
       isInFavorites: this.isInFavorites.bind(this),
       setFilteredCoins: this.setFilteredCoins.bind(this),
       setCurrentFavorite: this.setCurrentFavorite.bind(this),
-      changeChartOption: this.changeChartOption.bind(this)
+      changeChartOption: this.changeChartOption.bind(this),
+      changeTheme: this.changeTheme.bind(this)
     };
   }
 
@@ -47,11 +50,12 @@ export class AppProvider extends Component {
     const cryptoDashData = JSON.parse(window.localStorage.getItem('cryptoDash'));
 
     if (!cryptoDashData || !cryptoDashData.favorites) {
-      return { page: 'settings', firstVisit: true };
+      return { page: 'settings', firstVisit: true, theme: cryptoDashData && cryptoDashData.theme ? cryptoDashData.theme : 'dark' };
     }
 
-    const { favorites, currentFavorite } = cryptoDashData;
-    return { favorites, currentFavorite };
+    const { favorites, currentFavorite, theme } = cryptoDashData;
+
+    return { favorites, currentFavorite, theme: theme || 'dark' };
   }
 
   confirmFavorites() {
@@ -94,11 +98,19 @@ export class AppProvider extends Component {
 
     window.localStorage.setItem('cryptoDash', JSON.stringify({
       ...JSON.parse(window.localStorage.getItem('cryptoDash')), currentFavorite: symbol
-    }))
+    }));
   }
 
   changeChartOption(timeInterval) {
     this.setState({ timeInterval, historical: null }, this._fetchHistorical.bind(this));
+  }
+
+  changeTheme(theme) {
+    window.localStorage.setItem('cryptoDash', JSON.stringify({
+      ...JSON.parse(window.localStorage.getItem('cryptoDash')), theme: theme ? 'dark' : 'light'
+    }));
+
+    setTimeout(() => window.location.reload(), 200);
   }
 
   async _fetchCoins() {
@@ -124,6 +136,8 @@ export class AppProvider extends Component {
   }
 
   async _fetchHistorical() {
+    if (this.state.firstVisit) { this.setState({ historical: null }) }
+
     this.setState({
       historical: [
         {

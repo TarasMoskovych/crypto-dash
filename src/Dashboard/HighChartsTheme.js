@@ -1,3 +1,8 @@
+import { lightTheme } from './../Shared/Styles';
+
+const blue = '#061a44';
+const grey = '#A0A0A0';
+
 export default {
   colors: [
     '#61d936',
@@ -10,16 +15,16 @@ export default {
     '#1b2839'
   ],
   chart: {
-    backgroundColor: '#061a44',
+    backgroundColor: lightTheme ? 'white' : blue,
     borderColor: '#000000',
     borderWidth: 0,
     className: 'dark-container',
-    plotBackgroundColor: '#061a44',
+    plotBackgroundColor: lightTheme ? 'white' : blue,
     plotBorderWidth: 0
   },
   title: {
     style: {
-      color: '#C0C0C0',
+      color: lightTheme ? blue : '#C0C0C0',
       font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
     }
   },
@@ -34,14 +39,14 @@ export default {
     gridLineWidth: 0,
     labels: {
       style: {
-        color: '#A0A0A0'
+        color: lightTheme ? blue : grey
       }
     },
-    lineColor: '#A0A0A0',
-    tickColor: '#A0A0A0',
+    lineColor: lightTheme ? blue : grey,
+    tickColor: lightTheme ? blue : grey,
     title: {
       style: {
-        color: '#CCC',
+        color: lightTheme ? blue : '#CCC',
         fontWeight: 'bold',
         fontSize: '12px',
         fontFamily: 'Trebuchet MS, Verdana, sans-serif'
@@ -52,16 +57,16 @@ export default {
     gridLineColor: '#333333',
     labels: {
       style: {
-        color: '#A0A0A0'
+        color: lightTheme ? blue : grey
       }
     },
-    lineColor: '#A0A0A0',
+    lineColor: lightTheme ? blue : grey,
     minorTickInterval: null,
-    tickColor: '#A0A0A0',
+    tickColor: lightTheme ? blue : grey,
     tickWidth: 1,
     title: {
       style: {
-        color: '#CCC',
+        color: lightTheme ? blue : '#CCC',
         fontWeight: 'bold',
         fontSize: '12px',
         fontFamily: 'Trebuchet MS, Verdana, sans-serif'
@@ -82,7 +87,7 @@ export default {
   plotOptions: {
     line: {
       dataLabels: {
-        color: '#CCC'
+        color: lightTheme ? blue : '#CCC'
       },
       marker: {
         lineColor: '#333'
@@ -110,7 +115,7 @@ export default {
   },
   labels: {
     style: {
-      color: '#CCC'
+      color: lightTheme ? blue : '#CCC'
     }
   },
   navigation: {
@@ -140,7 +145,7 @@ export default {
       },
       stroke: '#000000',
       style: {
-        color: '#CCC',
+        color: lightTheme ? blue : '#CCC',
         fontWeight: 'bold'
       },
       states: {
@@ -185,7 +190,7 @@ export default {
       backgroundColor: '#666',
       borderColor: '#AAA'
     },
-    outlineColor: '#CCC',
+    outlineColor: lightTheme ? blue : '#CCC',
     maskFill: 'rgba(16, 16, 16, 0.5)',
     series: {
       color: '#7798BF',
@@ -200,8 +205,8 @@ export default {
         [0.6, '#555']
       ]
     },
-    barBorderColor: '#CCC',
-    buttonArrowColor: '#CCC',
+    barBorderColor: lightTheme ? blue : '#CCC',
+    buttonArrowColor: lightTheme ? blue : '#CCC',
     buttonBackgroundColor: {
       linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
       stops: [
@@ -209,7 +214,7 @@ export default {
         [0.6, '#555']
       ]
     },
-    buttonBorderColor: '#CCC',
+    buttonBorderColor: lightTheme ? blue : '#CCC',
     rifleColor: '#FFF',
     trackBackgroundColor: {
       linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },

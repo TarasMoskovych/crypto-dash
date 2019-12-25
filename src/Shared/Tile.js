@@ -8,12 +8,16 @@ export const Tile = styled.div`
   padding: 10px;
   text-align: center;
 
-  ${props => props.grid && css `
+  ${props => props.grid && css`
     display: grid;
   `}
 
-  ${props => props.left && css `
+  ${props => props.left && css`
     text-align: left;
+  `}
+
+  ${props => props.relative && css`
+    position: relative;
   `}
 `;
 

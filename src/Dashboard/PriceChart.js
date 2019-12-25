@@ -14,7 +14,7 @@ export default function() {
   return (
     <AppContext.Consumer>
       {({ currentFavorite, historical, changeChartOption }) =>
-        <Tile left>
+        <Tile left relative>
           <ChartSelect defaultValue={'months'} onChange={e => changeChartOption(e.target.value)}>
             <option value={'days'}>Days</option>
             <option value={'weeks'}>Weeks</option>

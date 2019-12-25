@@ -1,6 +1,7 @@
 import React from 'react';
 import Loader from 'react-loader-spinner'
 import styled, { css } from 'styled-components';
+import { lightTheme } from './../Shared/Styles';
 
 const Wrapper = styled.div`
   align-items: center;
@@ -23,7 +24,7 @@ export default function({ global }) {
     <Wrapper global={global}>
       <Loader
         type="Oval"
-        color="#fff"
+        color={lightTheme ? '#000' : '#fff'}
         height={100}
         width={100}
       />
