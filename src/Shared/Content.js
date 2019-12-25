@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Loader from './../Shared/Loader';
 import { AppContext } from './../App/AppProvider';
 
 export default function(props) {
@@ -7,12 +8,12 @@ export default function(props) {
     <AppContext.Consumer>
       {({ coinList, prices, firstVisit }) => {
         if (!coinList) {
-          return <div>Loading Coins</div>
+          return <Loader global/>;
         }
         if (!firstVisit && !prices) {
-          return <div>Loading Prices</div>
+          return <Loader global/>;
         }
-        return <div>{props.children}</div>
+        return <div>{props.children}</div>;
       }}
     </AppContext.Consumer>
   );

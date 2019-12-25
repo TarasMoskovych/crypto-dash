@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { subtleBoxShadow, lightBlueBackground, greenBoxShadow, redBoxShadow } from './Styles';
 
@@ -7,6 +7,14 @@ export const Tile = styled.div`
   ${subtleBoxShadow}
   padding: 10px;
   text-align: center;
+
+  ${props => props.grid && css `
+    display: grid;
+  `}
+
+  ${props => props.left && css `
+    text-align: left;
+  `}
 `;
 
 export const SelectableTile = styled(Tile)`

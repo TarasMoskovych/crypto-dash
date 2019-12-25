@@ -40,7 +40,7 @@ function ChangePercent({ data }) {
   return (
     <RightSelf>
       <ChangePercentStyled red={data.CHANGEPCT24HOUR < 0}>
-        {numberFormat(data.CHANGEPCT24HOUR)}
+        {numberFormat(data.CHANGEPCT24HOUR)}%
       </ChangePercentStyled>
     </RightSelf>
   );
