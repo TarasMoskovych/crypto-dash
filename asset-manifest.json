@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/crypto-dash/static/css/main.4dea9a32.chunk.css",
-    "main.js": "/crypto-dash/static/js/main.23aa81c6.chunk.js",
-    "main.js.map": "/crypto-dash/static/js/main.23aa81c6.chunk.js.map",
+    "main.css": "/crypto-dash/static/css/main.163f4fc8.chunk.css",
+    "main.js": "/crypto-dash/static/js/main.6ecec3ba.chunk.js",
+    "main.js.map": "/crypto-dash/static/js/main.6ecec3ba.chunk.js.map",
     "runtime-main.js": "/crypto-dash/static/js/runtime-main.ae640967.js",
     "runtime-main.js.map": "/crypto-dash/static/js/runtime-main.ae640967.js.map",
-    "static/js/2.b69bdb48.chunk.js": "/crypto-dash/static/js/2.b69bdb48.chunk.js",
-    "static/js/2.b69bdb48.chunk.js.map": "/crypto-dash/static/js/2.b69bdb48.chunk.js.map",
+    "static/js/2.babb2b45.chunk.js": "/crypto-dash/static/js/2.babb2b45.chunk.js",
+    "static/js/2.babb2b45.chunk.js.map": "/crypto-dash/static/js/2.babb2b45.chunk.js.map",
     "index.html": "/crypto-dash/index.html",
-    "precache-manifest.dd7cbb5b80a405feefd74f5e8fe8ebcf.js": "/crypto-dash/precache-manifest.dd7cbb5b80a405feefd74f5e8fe8ebcf.js",
+    "precache-manifest.e0f149f22c27049a1896f839d0f75179.js": "/crypto-dash/precache-manifest.e0f149f22c27049a1896f839d0f75179.js",
     "service-worker.js": "/crypto-dash/service-worker.js",
-    "static/css/main.4dea9a32.chunk.css.map": "/crypto-dash/static/css/main.4dea9a32.chunk.css.map",
-    "static/js/2.b69bdb48.chunk.js.LICENSE": "/crypto-dash/static/js/2.b69bdb48.chunk.js.LICENSE"
+    "static/css/main.163f4fc8.chunk.css.map": "/crypto-dash/static/css/main.163f4fc8.chunk.css.map",
+    "static/js/2.babb2b45.chunk.js.LICENSE": "/crypto-dash/static/js/2.babb2b45.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.ae640967.js",
-    "static/js/2.b69bdb48.chunk.js",
-    "static/css/main.4dea9a32.chunk.css",
-    "static/js/main.23aa81c6.chunk.js"
+    "static/js/2.babb2b45.chunk.js",
+    "static/css/main.163f4fc8.chunk.css",
+    "static/js/main.6ecec3ba.chunk.js"
   ]
 }
