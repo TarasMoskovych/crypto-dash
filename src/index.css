@@ -4,6 +4,12 @@
   top: -3px;
 }
 
+@media screen and (max-width: 480px) {
+  .switch-wrapper {
+    justify-self: end;
+  }
+}
+
 .switch-input[type="checkbox"] {
   height: 0;
   width: 0;

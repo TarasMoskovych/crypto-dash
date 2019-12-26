@@ -6,6 +6,10 @@ import { AppContext } from './AppProvider';
 
 const Logo = styled.div`
   font-size: 1.5em;
+
+  @media screen and (max-width: 480px) {
+    margin-bottom: 5px;
+  }
 `;
 
 const Bar = styled.div`
@@ -13,6 +17,10 @@ const Bar = styled.div`
   display: grid;
   grid-template-columns: 180px auto 100px 80px 50px;
   margin-bottom: 40px;
+
+  @media screen and (max-width: 480px) {
+    grid-template-columns: auto;
+  }
 `;
 
 const ControlButttonEl = styled.div`

@@ -10,6 +10,16 @@ import { backgroundColor2, fontSize2 } from './../Shared/Styles';
 const SearchGrid = styled.div`
   display: grid;
   grid-template-columns: 150px 1fr;
+
+  @media screen and (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const SearchTitle = styled.h3`
+  @media screen and (max-width: 480px) {
+    margin-bottom: 5px;
+  }
 `;
 
 const SearchInput = styled.input`
@@ -40,7 +50,7 @@ export default function() {
     <AppContext.Consumer>
       {({ setFilteredCoins, coinList }) =>
         <SearchGrid>
-          <h3>Search coins:</h3>
+          <SearchTitle>Search coins:</SearchTitle>
           <SearchInput onKeyUp={(e) => filterCoins(e, setFilteredCoins, coinList)}/>
         </SearchGrid>
       }
