@@ -59,7 +59,7 @@ export class AppProvider extends Component {
   }
 
   confirmFavorites() {
-    const currentFavorite = this.state.favorites[0];
+    const currentFavorite = this.state.favorites[0] || 'BTC';
 
     this.setState({ firstVisit: false, page: 'dashboard', currentFavorite }, this._fetchPrices.bind(this));
 
